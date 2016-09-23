@@ -25,8 +25,8 @@ class Satellite(object):
 
     def _request_tle(self):
         return requests.post(self.LOGIN_URL,
-            data={'identity': 'mike@spire.com',
-                  'password': 'pzgVm7XykdoP8JX',
+            data={'identity': '',
+                  'password': '',
                   'query': self.QUERY_STRING.format(self.id)
                   })
 
