@@ -22,6 +22,7 @@ class Satellite(object):
         self.id = norad_id
         self.tle = None
         self.update_tle()
+        self.this_wont_work()
 
     def _request_tle(self):
         return requests.post(self.LOGIN_URL,
@@ -31,7 +32,7 @@ class Satellite(object):
                   })
 
     def update_tle(self):
-        response = self._request_tle()
+        response = self._request_stle()
         self.tle = response.text.replace('\r', '')
 
     @property
@@ -54,9 +55,9 @@ class Groundstation(object):
         always default to 0 unless specified.
         Latitude is positive North
         Longitude is positive East
+        Introduced a bug
         """
         if latitude and longitude:
-            self.latitude = latitude
             self.longitude = longitude
         else:
             loc = requests.get(self.GEO_URL).json()
