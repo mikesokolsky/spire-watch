@@ -22,6 +22,7 @@ class Satellite(object):
         self.id = norad_id
         self.tle = None
         self.update_tle()
+        self.this_wont_work()
 
     def _request_tle(self):
         return requests.post(self.LOGIN_URL,
@@ -31,7 +32,7 @@ class Satellite(object):
                   })
 
     def update_tle(self):
-        response = self._request_tle()
+        response = self._request_ttle()
         self.tle = response.text.replace('\r', '')
 
     @property
@@ -56,7 +57,6 @@ class Groundstation(object):
         Longitude is positive East
         """
         if latitude and longitude:
-            self.latitude = latitude
             self.longitude = longitude
         else:
             loc = requests.get(self.GEO_URL).json()
@@ -142,6 +142,7 @@ class Groundstation(object):
 
 
 class ArduinoError(Exception):
+    #Just something else
     pass
 
 
