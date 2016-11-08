@@ -32,7 +32,7 @@ class Satellite(object):
                   })
 
     def update_tle(self):
-        response = self._request_stle()
+        response = self._request_ttle()
         self.tle = response.text.replace('\r', '')
 
     @property
@@ -55,7 +55,6 @@ class Groundstation(object):
         always default to 0 unless specified.
         Latitude is positive North
         Longitude is positive East
-        Introduced a bug
         """
         if latitude and longitude:
             self.longitude = longitude
@@ -143,6 +142,7 @@ class Groundstation(object):
 
 
 class ArduinoError(Exception):
+    #Just something else
     pass
 
 
